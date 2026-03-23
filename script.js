@@ -1,127 +1,3 @@
-const STORAGE_KEY = "philosophyOfMindTrackerV2";
-
-const readingListData = [
-  {
-    id: "montero-vsi",
-    order: 1,
-    title: "Philosophy of Mind: A Very Short Introduction",
-    author: "Barbara Gail Montero",
-    category: "Foundation",
-    description: "A fast, approachable orientation to the field. Good for dualism, physicalism, and qualia."
-  },
-  {
-    id: "minds-i",
-    order: 2,
-    title: "The Mind's I",
-    author: "Douglas Hofstadter & Daniel Dennett",
-    category: "Foundation",
-    description: "A playful but serious anthology on selfhood, AI, identity, and consciousness."
-  },
-  {
-    id: "consciousness-explained",
-    order: 3,
-    title: "Consciousness Explained",
-    author: "Daniel Dennett",
-    category: "Foundation",
-    description: "A major defense of a non-mysterious account of consciousness, challenging the idea of an inner theater."
-  },
-  {
-    id: "mind-brief-intro",
-    order: 4,
-    title: "Mind: A Brief Introduction",
-    author: "John Searle",
-    category: "Foundation",
-    description: "A clear overview of core philosophy of mind positions and Searle's own biological naturalism."
-  },
-  {
-    id: "rediscovery-mind",
-    order: 5,
-    title: "The Rediscovery of the Mind",
-    author: "John Searle",
-    category: "Core Debates",
-    description: "A sharper critique of computational views of mind, including the broader implications of Searle's position."
-  },
-  {
-    id: "metaphysics-of-mind",
-    order: 6,
-    title: "Philosophy of Mind / Metaphysics of Mind",
-    author: "Jaegwon Kim",
-    category: "Core Debates",
-    description: "A more rigorous treatment of physicalism, supervenience, and the mental causation problem."
-  },
-  {
-    id: "mind-and-world",
-    order: 7,
-    title: "Mind and World",
-    author: "John McDowell",
-    category: "Core Debates",
-    description: "A deeper and more difficult work on perception, experience, and how mind relates to reality."
-  },
-  {
-    id: "being-you",
-    order: 8,
-    title: "Being You",
-    author: "Anil Seth",
-    category: "Contemporary",
-    description: "A modern bridge between neuroscience and philosophy, especially on consciousness and selfhood."
-  },
-  {
-    id: "surfing-uncertainty",
-    order: 9,
-    title: "Surfing Uncertainty",
-    author: "Andy Clark",
-    category: "Contemporary",
-    description: "An influential introduction to predictive processing and the brain as a prediction machine."
-  },
-  {
-    id: "strange-loop",
-    order: 10,
-    title: "I Am a Strange Loop",
-    author: "Douglas Hofstadter",
-    category: "Contemporary",
-    description: "A rich exploration of the self, recursion, identity, and consciousness."
-  },
-  {
-    id: "conscious",
-    order: 11,
-    title: "Conscious",
-    author: "Annaka Harris",
-    category: "Contemporary",
-    description: "A short, provocative read that opens the door to panpsychism and other nonstandard views."
-  },
-  {
-    id: "chalmers-anthology",
-    order: 12,
-    title: "Philosophy of Mind: Classical and Contemporary Readings",
-    author: "Edited by David Chalmers",
-    category: "Anthology",
-    description: "A sourcebook for reading the major arguments and original texts in one place."
-  },
-  {
-    id: "nagel-bat",
-    order: 13,
-    title: "What Is It Like to Be a Bat?",
-    author: "Thomas Nagel",
-    category: "Papers",
-    description: "Classic paper on subjectivity and the challenge of objective accounts of consciousness."
-  },
-  {
-    id: "jackson-qualia",
-    order: 14,
-    title: "Epiphenomenal Qualia",
-    author: "Frank Jackson",
-    category: "Papers",
-    description: "The famous knowledge argument and Mary thought experiment."
-  },
-  {
-    id: "searle-programs",
-    order: 15,
-    title: "Minds, Brains, and Programs",
-    author: "John Searle",
-    category: "Papers",
-    description: "The original Chinese Room paper and a key attack on strong AI."
-  }
-];
 
 const readingList = document.getElementById("readingList");
 const template = document.getElementById("itemTemplate");
@@ -146,12 +22,7 @@ function normalizeStatus(itemState) {
 }
 
 function getDefaultState() {
-  return {
-    items: {},
-    meta: {
-      lastUpdated: null
-    }
-  };
+  return { items: {}, meta: { lastUpdated: null } };
 }
 
 function loadState() {
@@ -251,7 +122,6 @@ function applyArticleState(article, status) {
 function renderItems() {
   const state = loadState();
   const visibleItems = getVisibleItems(state);
-
   readingList.innerHTML = "";
 
   if (visibleItems.length === 0) {
@@ -274,6 +144,7 @@ function renderItems() {
     const textarea = node.querySelector("textarea");
     const statusSelect = node.querySelector(".status-select");
     const categoryPill = node.querySelector(".category-pill");
+    const detailLink = node.querySelector(".detail-link");
 
     const saved = state.items[item.id] || { status: "not-started", done: false, notes: "" };
     const status = normalizeStatus(saved);
@@ -286,16 +157,14 @@ function renderItems() {
     statusSelect.value = status;
     checkbox.checked = status === "done";
     categoryPill.textContent = item.category;
+    detailLink.href = `detail.html?id=${encodeURIComponent(item.id)}`;
     applyArticleState(article, status);
 
     checkbox.addEventListener("change", () => {
       const nextStatus = checkbox.checked ? "done" : "not-started";
       statusSelect.value = nextStatus;
       applyArticleState(article, nextStatus);
-      updateItemState(item.id, {
-        status: nextStatus,
-        notes: textarea.value
-      });
+      updateItemState(item.id, { status: nextStatus, notes: textarea.value });
       renderItems();
     });
 
@@ -303,18 +172,12 @@ function renderItems() {
       const nextStatus = statusSelect.value;
       checkbox.checked = nextStatus === "done";
       applyArticleState(article, nextStatus);
-      updateItemState(item.id, {
-        status: nextStatus,
-        notes: textarea.value
-      });
+      updateItemState(item.id, { status: nextStatus, notes: textarea.value });
       renderItems();
     });
 
     textarea.addEventListener("input", () => {
-      updateItemState(item.id, {
-        status: statusSelect.value,
-        notes: textarea.value
-      });
+      updateItemState(item.id, { status: statusSelect.value, notes: textarea.value });
     });
 
     readingList.appendChild(node);
@@ -337,11 +200,7 @@ function markAllDone() {
   const state = loadState();
   readingListData.forEach(item => {
     const prev = state.items[item.id] || {};
-    state.items[item.id] = {
-      status: "done",
-      done: true,
-      notes: prev.notes || ""
-    };
+    state.items[item.id] = { status: "done", done: true, notes: prev.notes || "" };
   });
   saveState(state);
   renderItems();
@@ -366,11 +225,7 @@ function clearNotes() {
   readingListData.forEach(item => {
     const prev = state.items[item.id] || {};
     const status = normalizeStatus(prev);
-    state.items[item.id] = {
-      status,
-      done: status === "done",
-      notes: ""
-    };
+    state.items[item.id] = { status, done: status === "done", notes: "" };
   });
   saveState(state);
   renderItems();
@@ -381,7 +236,7 @@ function exportProgress() {
   const payload = {
     exportedAt: new Date().toISOString(),
     app: "Philosophy of Mind Tracker",
-    version: 2,
+    version: 4,
     data: state
   };
 

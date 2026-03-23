@@ -15,7 +15,7 @@
         <h1>Philosophy of Mind</h1>
         <p class="subtitle">
           Track your progress through a structured reading list, save notes for each item,
-          and organize your work by category and reading status.
+          and jump into detail pages with memory-refresh summaries for each work.
         </p>
       </div>
 
@@ -98,7 +98,7 @@
         </div>
         <div class="filter-block search-block">
           <label for="searchInput">Search</label>
-          <input id="searchInput" type="text" placeholder="Search title, author, or notes" />
+          <input id="searchInput" type="text" placeholder="Search title, author, category, or notes" />
         </div>
       </div>
     </section>
@@ -141,14 +141,16 @@
             </select>
           </div>
         </div>
+        <a class="detail-link" href="#">Open detail page</a>
       </div>
       <div class="item-notes">
-        <label>Notes</label>
+        <label class="field-label">Notes</label>
         <textarea placeholder="Thoughts, arguments, objections, favorite passages, page numbers..."></textarea>
       </div>
     </article>
   </template>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

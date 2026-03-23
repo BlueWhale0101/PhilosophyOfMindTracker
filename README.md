@@ -1,56 +1,28 @@
 # Philosophy of Mind Tracker
 
-A simple static web app for tracking progress through a philosophy of mind reading list.
+This version restores the full home page and includes all 15 reading items.
 
-## New in this version
-
-- Categories for each reading item:
-  - Foundation
-  - Core Debates
-  - Contemporary
-  - Anthology
-  - Papers
-- Status for each item:
-  - Not started
-  - Reading
-  - Done
-- Filters for category and status
-- Search across title, author, category, and notes
-
-## Features
-
-- Ordered reading list
-- Check off completed books and papers
-- Keep notes for each item
-- Progress summary with completion ring
-- Data saved locally in the browser with `localStorage`
-- Export and import progress as JSON
-- Deployable on GitHub Pages with no build step
+## Included
+- Full home page with:
+  - stats
+  - progress ring
+  - filters
+  - search
+  - notes
+  - status dropdowns
+  - import/export
+- Detail page for each reading
+- Pre-written memory-refresh summary for all 15 items
+- Notes and status sync between home page and detail page
+- Static deployment for GitHub Pages
 
 ## Files
+- index.html
+- detail.html
+- data.js
+- script.js
+- detail.js
+- styles.css
 
-- `index.html`
-- `styles.css`
-- `script.js`
-
-## Quick start
-
-Open `index.html` in a browser.
-
-## Deploy to GitHub Pages
-
-1. Create a new GitHub repository.
-2. Upload these files to the repository root.
-3. Commit and push.
-4. In GitHub, open **Settings** → **Pages**.
-5. Under **Build and deployment**, choose:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` (or your default branch)
-   - **Folder:** `/root`
-6. Save.
-7. GitHub will give you a public URL for the app.
-
-## Notes
-
-- Progress is stored in the browser on the device you use.
-- If you want a backup or want to move devices, use **Export progress** and then **Import progress** on the other device.
+## GitHub Pages
+Upload the files to the repository root, then enable Pages from the main branch.
