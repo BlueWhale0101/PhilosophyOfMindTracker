@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Philosophy of Mind Tracker</title>
+  <meta name="description" content="A deployable reading tracker for philosophy of mind books and papers." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero card">
+      <div class="hero-copy">
+        <p class="eyebrow">Reading tracker</p>
+        <h1>Philosophy of Mind</h1>
+        <p class="subtitle">
+          Track your progress through a structured reading list, save notes for each item,
+          and watch your completion grow over time.
+        </p>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-label">Items</span>
+          <strong class="stat-value" id="totalCount">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Done</span>
+          <strong class="stat-value" id="doneCount">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Progress</span>
+          <strong class="stat-value" id="progressPct">0%</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="toolbar card">
+      <div class="toolbar-group">
+        <button id="markAllDoneBtn" type="button">Mark all done</button>
+        <button id="clearChecksBtn" type="button">Clear checks</button>
+        <button id="clearNotesBtn" type="button">Clear notes</button>
+      </div>
+      <div class="toolbar-group">
+        <button id="exportBtn" type="button">Export progress</button>
+        <label class="import-label" for="importFile">Import progress</label>
+        <input id="importFile" type="file" accept="application/json" />
+      </div>
+    </section>
+
+    <section class="overview-grid">
+      <article class="card progress-card">
+        <div class="card-header">
+          <h2>Progress</h2>
+          <p>Your completion at a glance</p>
+        </div>
+        <div class="progress-ring-wrap">
+          <svg viewBox="0 0 120 120" class="progress-ring" aria-hidden="true">
+            <circle class="ring-bg" cx="60" cy="60" r="48"></circle>
+            <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="48"></circle>
+          </svg>
+          <div class="progress-center">
+            <strong id="progressNumber">0%</strong>
+            <span>complete</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card notes-card">
+        <div class="card-header">
+          <h2>Study notes</h2>
+          <p>Keep a running record of your ideas and questions</p>
+        </div>
+        <ul class="summary-list">
+          <li><span>Notes written</span><strong id="notesCount">0</strong></li>
+          <li><span>Remaining items</span><strong id="remainingCount">0</strong></li>
+          <li><span>Last updated</span><strong id="lastUpdated">—</strong></li>
+        </ul>
+      </article>
+    </section>
+
+    <main class="list-section">
+      <div class="section-header">
+        <h2>Reading list</h2>
+        <p>In recommended order, with <em>The Conscious Mind</em> removed.</p>
+      </div>
+      <div id="readingList" class="reading-list"></div>
+    </main>
+  </div>
+
+  <template id="itemTemplate">
+    <article class="reading-item card">
+      <div class="reading-top">
+        <div class="check-cell">
+          <input class="done-checkbox" type="checkbox" />
+        </div>
+        <div class="item-main">
+          <div class="item-heading">
+            <span class="order-pill"></span>
+            <div>
+              <h3 class="item-title"></h3>
+              <p class="item-author"></p>
+            </div>
+          </div>
+          <p class="item-description"></p>
+        </div>
+      </div>
+      <div class="item-notes">
+        <label>Notes</label>
+        <textarea placeholder="Thoughts, arguments, objections, favorite passages, page numbers..."></textarea>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
