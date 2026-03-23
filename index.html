@@ -15,7 +15,7 @@
         <h1>Philosophy of Mind</h1>
         <p class="subtitle">
           Track your progress through a structured reading list, save notes for each item,
-          and watch your completion grow over time.
+          and organize your work by category and reading status.
         </p>
       </div>
 
@@ -29,8 +29,8 @@
           <strong class="stat-value" id="doneCount">0</strong>
         </div>
         <div class="stat">
-          <span class="stat-label">Progress</span>
-          <strong class="stat-value" id="progressPct">0%</strong>
+          <span class="stat-label">In progress</span>
+          <strong class="stat-value" id="readingCount">0</strong>
         </div>
       </div>
     </header>
@@ -38,7 +38,7 @@
     <section class="toolbar card">
       <div class="toolbar-group">
         <button id="markAllDoneBtn" type="button">Mark all done</button>
-        <button id="clearChecksBtn" type="button">Clear checks</button>
+        <button id="clearChecksBtn" type="button">Clear done</button>
         <button id="clearNotesBtn" type="button">Clear notes</button>
       </div>
       <div class="toolbar-group">
@@ -79,6 +79,30 @@
       </article>
     </section>
 
+    <section class="filters card">
+      <div class="filters-row">
+        <div class="filter-block">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+        <div class="filter-block">
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="all">All statuses</option>
+            <option value="not-started">Not started</option>
+            <option value="reading">Reading</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <div class="filter-block search-block">
+          <label for="searchInput">Search</label>
+          <input id="searchInput" type="text" placeholder="Search title, author, or notes" />
+        </div>
+      </div>
+    </section>
+
     <main class="list-section">
       <div class="section-header">
         <h2>Reading list</h2>
@@ -97,12 +121,25 @@
         <div class="item-main">
           <div class="item-heading">
             <span class="order-pill"></span>
-            <div>
-              <h3 class="item-title"></h3>
+            <div class="heading-copy">
+              <div class="title-row">
+                <h3 class="item-title"></h3>
+                <div class="pill-row">
+                  <span class="category-pill"></span>
+                </div>
+              </div>
               <p class="item-author"></p>
             </div>
           </div>
           <p class="item-description"></p>
+          <div class="status-row">
+            <label>Status</label>
+            <select class="status-select">
+              <option value="not-started">Not started</option>
+              <option value="reading">Reading</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="item-notes">

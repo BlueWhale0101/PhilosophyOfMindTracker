@@ -2,6 +2,21 @@
 
 A simple static web app for tracking progress through a philosophy of mind reading list.
 
+## New in this version
+
+- Categories for each reading item:
+  - Foundation
+  - Core Debates
+  - Contemporary
+  - Anthology
+  - Papers
+- Status for each item:
+  - Not started
+  - Reading
+  - Done
+- Filters for category and status
+- Search across title, author, category, and notes
+
 ## Features
 
 - Ordered reading list
