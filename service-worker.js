@@ -1,5 +1,5 @@
 
-const CACHE_NAME = "philosophy-of-mind-tracker-v1";
+const CACHE_NAME = "philosophy-of-mind-tracker-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -9,6 +9,11 @@ const ASSETS = [
   "./script.js",
   "./detail.js",
   "./manifest.webmanifest",
+  "./apple-touch-icon-180x180.png",
+  "./apple-touch-icon-167x167.png",
+  "./apple-touch-icon-152x152.png",
+  "./apple-touch-icon-120x120.png",
+  "./apple-touch-icon.png",
   "./icons/icon-180.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",

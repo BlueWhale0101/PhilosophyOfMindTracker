@@ -41,3 +41,7 @@ Progress still saves locally in the browser on each device unless you export/imp
 
 ## Icon fix
 This package includes a root-level `apple-touch-icon.png` and iOS-specific meta tags, which improves Home Screen icon behavior on iPhone and iPad.
+
+
+## Additional iOS/GitHub Pages hardening
+This build adds Apple touch icon filenames for 120, 152, 167, and 180 sizes, includes a root `apple-touch-icon.png`, adds `.nojekyll`, and bumps the service worker cache version.
