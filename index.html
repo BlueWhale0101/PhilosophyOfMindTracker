@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Philosophy of Mind Tracker</title>
   <meta name="description" content="A deployable reading tracker for philosophy of mind books and papers." />
+  <meta name="theme-color" content="#6f8259" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-180.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,23 +19,14 @@
         <h1>Philosophy of Mind</h1>
         <p class="subtitle">
           Track your progress through a structured reading list, save notes for each item,
-          and organize your work by category and reading status.
+          and jump into detail pages with memory-refresh summaries for each work.
         </p>
+        <p class="install-tip">This version is packaged as a PWA for GitHub Pages, with offline support after the first visit.</p>
       </div>
-
       <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-label">Items</span>
-          <strong class="stat-value" id="totalCount">0</strong>
-        </div>
-        <div class="stat">
-          <span class="stat-label">Done</span>
-          <strong class="stat-value" id="doneCount">0</strong>
-        </div>
-        <div class="stat">
-          <span class="stat-label">In progress</span>
-          <strong class="stat-value" id="readingCount">0</strong>
-        </div>
+        <div class="stat"><span class="stat-label">Items</span><strong class="stat-value" id="totalCount">0</strong></div>
+        <div class="stat"><span class="stat-label">Done</span><strong class="stat-value" id="doneCount">0</strong></div>
+        <div class="stat"><span class="stat-label">In progress</span><strong class="stat-value" id="readingCount">0</strong></div>
       </div>
     </header>
 
@@ -50,27 +45,17 @@
 
     <section class="overview-grid">
       <article class="card progress-card">
-        <div class="card-header">
-          <h2>Progress</h2>
-          <p>Your completion at a glance</p>
-        </div>
+        <div class="card-header"><h2>Progress</h2><p>Your completion at a glance</p></div>
         <div class="progress-ring-wrap">
           <svg viewBox="0 0 120 120" class="progress-ring" aria-hidden="true">
             <circle class="ring-bg" cx="60" cy="60" r="48"></circle>
             <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="48"></circle>
           </svg>
-          <div class="progress-center">
-            <strong id="progressNumber">0%</strong>
-            <span>complete</span>
-          </div>
+          <div class="progress-center"><strong id="progressNumber">0%</strong><span>complete</span></div>
         </div>
       </article>
-
       <article class="card notes-card">
-        <div class="card-header">
-          <h2>Study notes</h2>
-          <p>Keep a running record of your ideas and questions</p>
-        </div>
+        <div class="card-header"><h2>Study notes</h2><p>Keep a running record of your ideas and questions</p></div>
         <ul class="summary-list">
           <li><span>Notes written</span><strong id="notesCount">0</strong></li>
           <li><span>Remaining items</span><strong id="remainingCount">0</strong></li>
@@ -83,9 +68,7 @@
       <div class="filters-row">
         <div class="filter-block">
           <label for="categoryFilter">Category</label>
-          <select id="categoryFilter">
-            <option value="all">All categories</option>
-          </select>
+          <select id="categoryFilter"><option value="all">All categories</option></select>
         </div>
         <div class="filter-block">
           <label for="statusFilter">Status</label>
@@ -98,7 +81,7 @@
         </div>
         <div class="filter-block search-block">
           <label for="searchInput">Search</label>
-          <input id="searchInput" type="text" placeholder="Search title, author, or notes" />
+          <input id="searchInput" type="text" placeholder="Search title, author, category, or notes" />
         </div>
       </div>
     </section>
@@ -115,18 +98,14 @@
   <template id="itemTemplate">
     <article class="reading-item card">
       <div class="reading-top">
-        <div class="check-cell">
-          <input class="done-checkbox" type="checkbox" />
-        </div>
+        <div class="check-cell"><input class="done-checkbox" type="checkbox" /></div>
         <div class="item-main">
           <div class="item-heading">
             <span class="order-pill"></span>
             <div class="heading-copy">
               <div class="title-row">
                 <h3 class="item-title"></h3>
-                <div class="pill-row">
-                  <span class="category-pill"></span>
-                </div>
+                <div class="pill-row"><span class="category-pill"></span></div>
               </div>
               <p class="item-author"></p>
             </div>
@@ -141,14 +120,16 @@
             </select>
           </div>
         </div>
+        <a class="detail-link" href="#">Open detail page</a>
       </div>
       <div class="item-notes">
-        <label>Notes</label>
+        <label class="field-label">Notes</label>
         <textarea placeholder="Thoughts, arguments, objections, favorite passages, page numbers..."></textarea>
       </div>
     </article>
   </template>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

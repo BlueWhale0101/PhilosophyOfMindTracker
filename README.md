@@ -1,56 +1,39 @@
-# Philosophy of Mind Tracker
+# Philosophy of Mind Tracker PWA
 
-A simple static web app for tracking progress through a philosophy of mind reading list.
+This package is ready for GitHub Pages and includes Progressive Web App support.
 
-## New in this version
-
-- Categories for each reading item:
-  - Foundation
-  - Core Debates
-  - Contemporary
-  - Anthology
-  - Papers
-- Status for each item:
-  - Not started
-  - Reading
-  - Done
-- Filters for category and status
-- Search across title, author, category, and notes
-
-## Features
-
-- Ordered reading list
-- Check off completed books and papers
-- Keep notes for each item
-- Progress summary with completion ring
-- Data saved locally in the browser with `localStorage`
-- Export and import progress as JSON
-- Deployable on GitHub Pages with no build step
+## Included
+- Full reading tracker
+- Detail page for every item
+- Offline support after first load
+- Web app manifest
+- Installable app icons
+- Service worker for caching
+- Works on GitHub Pages
 
 ## Files
-
-- `index.html`
-- `styles.css`
-- `script.js`
-
-## Quick start
-
-Open `index.html` in a browser.
+- index.html
+- detail.html
+- data.js
+- script.js
+- detail.js
+- styles.css
+- manifest.webmanifest
+- service-worker.js
+- icons/
 
 ## Deploy to GitHub Pages
-
-1. Create a new GitHub repository.
-2. Upload these files to the repository root.
+1. Create a GitHub repository.
+2. Upload all files from this folder to the repository root.
 3. Commit and push.
-4. In GitHub, open **Settings** → **Pages**.
-5. Under **Build and deployment**, choose:
-   - **Source:** Deploy from a branch
-   - **Branch:** `main` (or your default branch)
-   - **Folder:** `/root`
-6. Save.
-7. GitHub will give you a public URL for the app.
+4. In GitHub, open Settings → Pages.
+5. Choose Deploy from a branch.
+6. Select your main branch and the root folder.
+7. Save.
+
+## iPhone / iPad
+Open the deployed site in Safari, then use Share → Add to Home Screen.
 
 ## Notes
-
-- Progress is stored in the browser on the device you use.
-- If you want a backup or want to move devices, use **Export progress** and then **Import progress** on the other device.
+The app works offline after the first successful visit.
+Progress still saves locally in the browser on each device unless you export/import.
