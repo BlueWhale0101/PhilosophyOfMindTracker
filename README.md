@@ -37,3 +37,7 @@ Open the deployed site in Safari, then use Share → Add to Home Screen.
 ## Notes
 The app works offline after the first successful visit.
 Progress still saves locally in the browser on each device unless you export/import.
+
+
+## Icon fix
+This package includes a root-level `apple-touch-icon.png` and iOS-specific meta tags, which improves Home Screen icon behavior on iPhone and iPad.
